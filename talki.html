@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ChitChat Fan App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4a90e2;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        main {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #3b7ac2;
+        }
+        .post {
+            border-top: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .post strong {
+            color: #4a90e2;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>💬 ChitChat Fan App</h1>
+        <p>Share your love for ChitChat with the world!</p>
+    </header>
+
+    <main>
+        <form id="postForm">
+            <input type="text" id="username" placeholder="Your name" required>
+            <textarea id="message" placeholder="Write your message..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+
+        <div id="posts"></div>
+    </main>
+
+    <script>
+        const form = document.getElementById("postForm");
+        const postsDiv = document.getElementById("posts");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (username && message) {
+                const post = document.createElement("div");
+                post.classList.add("post");
+                post.innerHTML = `<strong>${username}</strong>: ${message}`;
+                postsDiv.prepend(post);
+
+                form.reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
